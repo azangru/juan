@@ -1,10 +1,6 @@
 Juan::Application.routes.draw do
 
-  get "stanzas/index"
-
-  get "stanzas/show"
-
-  resources :canto, only: [] do
+  resources :cantos, only: [] do
     resources :stanzas, only: [:index, :show]
   end
 
