@@ -3,60 +3,62 @@
 / <form id="msform">
 / =form_tag
 
-.selection
-  =form_tag('../poem/show', method: :get)
+.row
+  .well.col-md-6
+    .selection
+      =form_tag('../poem/show', method: :get)
 
-  #selection-first
-    .field
-      =radio_button_tag 'view', 'no_annotations'
-      =label_tag 'view_no_annotations', 'Without annotations (in English or Russian)'
-    .field
-      =radio_button_tag 'view', 'asimov_annotations'
-      =label_tag 'view_asimov_annotations', 'With Asimov’s annotations (in English)'
-    .field
-      =radio_button_tag 'view', 'parallel_texts'
-      =label_tag 'view_parallel_texts', 'Parallel texts (side by side)'
+      #selection-first
+        .field
+          =radio_button_tag 'view', 'no_annotations'
+          =label_tag 'view_no_annotations', 'Without annotations (in English or Russian)'
+        .field
+          =radio_button_tag 'view', 'asimov_annotations'
+          =label_tag 'view_asimov_annotations', 'With Asimov’s annotations (in English)'
+        .field
+          =radio_button_tag 'view', 'parallel_texts'
+          =label_tag 'view_parallel_texts', 'Parallel texts (side by side)'
 
-  #selection-without-annotations
-    %h2 Without annotations
-    .field
-      =radio_button_tag 'text', 'english_original'
-      =label_tag 'text_english_original', 'English original'
-    .field
-      =radio_button_tag 'text', 'russian_gnedich'
-      =label_tag 'text_russian_gnedich', 'Russian translation by Tatiana Gnedich'
-    .field
-      =radio_button_tag 'text', 'russian_shengheli'
-      =label_tag 'text_russian_shengheli', 'Russian translation by Georgy Shengeli'
+      #selection-without-annotations.hidden
+        %h2 Without annotations
+        .field
+          =radio_button_tag 'text', 'english_original'
+          =label_tag 'text_english_original', 'English original'
+        .field
+          =radio_button_tag 'text', 'russian_gnedich'
+          =label_tag 'text_russian_gnedich', 'Russian translation by Tatiana Gnedich'
+        .field
+          =radio_button_tag 'text', 'russian_shengheli'
+          =label_tag 'text_russian_shengheli', 'Russian translation by Georgy Shengeli'
 
 
-  #selection-parallel-texts
-    %h2 Parallel texts (side by side)
-    .field
-      =check_box_tag 'english-original'
-      =label_tag 'english-original', 'English original (annotated)'
-    .field
-      =check_box_tag 'russian-gnedich'
-      =label_tag 'russian-gnedich', 'Russian translation by Tatiana Gnedich'
-    .field
-      =check_box_tag 'russian-shengheli'
-      =label_tag 'russian-shengheli', 'Russian translation by Georgy Shengeli'
+      #selection-parallel-texts.hidden
+        %h2 Parallel texts (side by side)
+        .field
+          =check_box_tag 'english-original'
+          =label_tag 'english-original', 'English original (annotated)'
+        .field
+          =check_box_tag 'russian-gnedich'
+          =label_tag 'russian-gnedich', 'Russian translation by Tatiana Gnedich'
+        .field
+          =check_box_tag 'russian-shengheli'
+          =label_tag 'russian-shengheli', 'Russian translation by Georgy Shengeli'
+        %button.btn.btn-default{:data => {:direction => 'from_parallel_to_cantos'}} Next
 
-  #selection-cantos
-    %h2 Cantos
-    .field
-      =radio_button_tag 'canto', 'Dedication'
-      =label_tag 'canto_dedication', 'Dedication'
-    .field
-      =radio_button_tag 'canto', 'Canto the First'
-      =label_tag 'canto_canto1', 'Canto I'
-    .field
-      =radio_button_tag 'canto', 'canto7'
-      =label_tag 'canto_canto7', 'Canto VII'
-    .field
-      =radio_button_tag 'canto', 'canto8'
-      =label_tag 'canto_canto8', 'Canto VIII'
-    
-  =submit_tag "Read"
-
-/ Previous
+      #selection-cantos.hidden
+        %h2 Cantos
+        .field
+          =radio_button_tag 'canto', 'Dedication'
+          =label_tag 'canto_dedication', 'Dedication'
+        .field
+          =radio_button_tag 'canto', 'Canto the First'
+          =label_tag 'canto_canto1', 'Canto I'
+        .field
+          =radio_button_tag 'canto', 'canto7'
+          =label_tag 'canto_canto7', 'Canto VII'
+        .field
+          =radio_button_tag 'canto', 'canto8'
+          =label_tag 'canto_canto8', 'Canto VIII'
+        =submit_tag "Read"
+        
+      

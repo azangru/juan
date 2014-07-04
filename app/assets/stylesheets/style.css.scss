@@ -1,5 +1,6 @@
 body{
   background-color: #fffcf6;
+  background-image: url('/assets/bg.jpg');
 }
 
 .comment-link{
@@ -34,6 +35,6 @@ body{
     }
   }
   input[type="radio"]{
-    // display: none;
+    display: none;
   }
 }
