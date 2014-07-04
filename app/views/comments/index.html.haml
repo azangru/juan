@@ -1,0 +1,10 @@
+%h1 Comments#index
+%p Find me in app/views/comments/index.html.haml
+
+%p
+
+-@comments.each do |c|
+  .comment
+    = c.number
+    = put_tags_in_comment(c.text)
+    / = put_tags_in_comment(c)

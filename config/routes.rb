@@ -1,7 +1,13 @@
 Juan::Application.routes.draw do
 
+  get "poem/show", to: 'poem#show'
+
   resources :cantos, only: [] do
     resources :stanzas, only: [:index, :show]
+  end
+
+  resources :annotators, only: [] do
+    resources :comments, only: [:index, :show]
   end
 
 end

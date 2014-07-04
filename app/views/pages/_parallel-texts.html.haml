@@ -1,0 +1,25 @@
+-#texts_number = @stanza_translations.length
+-keys = @stanza_translations.keys
+.row
+  %table.col-md-12
+    %thead
+      %tr
+        -keys.each do |key|
+          %th
+            %h1
+              = @stanza_translations[key].first.translation.title
+            %p
+              = @stanza_translations[key].first.translation.author
+            %h2
+              - canto_title = @stanza_translations[key].first.stanza.canto.canto_translations.find_by_translation_id(@stanza_translations[key].first.translation_id).title
+              = put_tags_in_stanza(canto_title)
+    %tbody
+      - (@stanza_translations[keys.first].length).times do |i|
+        %tr
+          -keys.each do |key|
+            %td
+              -stanza_number = @stanza_translations[key][i].stanza.number
+              .stanza-number
+                =stanza_number
+              -text = @stanza_translations[key][i].text
+              =put_tags_in_stanza(text)
