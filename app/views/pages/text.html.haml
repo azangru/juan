@@ -1,0 +1,4 @@
+- if @stanza_translations.class == Array
+  =render 'pages/single-text'
+- if @stanza_translations.class == Hash
+  =render 'pages/parallel-texts'

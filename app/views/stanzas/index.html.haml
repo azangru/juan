@@ -1,5 +1,7 @@
 %h1 Stanzas#index
 %p Find me in app/views/stanzas/index.html.haml
 %p
+/ at this point, should check whether @stanza_translations is an array or a hash and treat accordingly
 -@stanza_translations.each do |st|
-  %p= annotate_text(st).html_safe
+  %p= put_tags_in_stanza(st)
+  

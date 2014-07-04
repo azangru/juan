@@ -1,3 +1,39 @@
 body{
   background-color: #fffcf6;
 }
+
+.comment-link{
+  font-size: 130%;
+  line-height: 0.5em;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.1em;
+}
+
+.selection {
+  ul {
+    font-size: 150%;
+    list-style-type: none;
+    a {
+      border-bottom: 1px dashed;
+      &:hover {
+        text-decoration: none; 
+      }
+    }
+  }
+  label{
+    $label-color: #428bca;
+    $label-hover-color: darken($label-color, 15%);
+    color: $label-color;
+    border-bottom: 1px dashed;
+    font-size: 150%;
+    font-weight: normal;
+    margin-left: 0.5em;
+    &:hover{
+      color: $label-hover-color;
+    }
+  }
+  input[type="radio"]{
+    // display: none;
+  }
+}

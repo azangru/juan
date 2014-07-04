@@ -1,0 +1,11 @@
+%h1
+  =@stanza_translations.first.translation.title
+- canto_title = @stanza_translations.first.stanza.canto.canto_translations.find_by_translation_id(@stanza_translations.first.translation_id).title
+%h2
+  =put_tags_in_stanza(canto_title)
+%p
+-@stanza_translations.each do |st|
+  %p
+    = st.stanza.number
+    %br
+    = put_tags_in_stanza(st.text)
