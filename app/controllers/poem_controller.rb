@@ -18,9 +18,9 @@ class PoemController < ApplicationController
     #if user wants to view a text without annotations, select the relevant translations
     when "no_annotations" # get text of the original poem or of one of its translations
       translation = Translation.find_by_name(name_of_translation_when_no_annotations(params))
-      stanza_translations = @stanzas.map {|s| s.stanza_translations.find_by_translation_id(translation.id)}
+      stanza_translations = extract_translations(translation)
     when "asimov_annotations"
-      stanza_translations = @stanzas.map {|s| s.stanza_translations.find_by_translation_id(1)}
+      stanza_translations = extract_translations(Translation.first)
     when "parallel_texts"
       stanza_translations = parallel_texts_collection(params)
     end
