@@ -30,6 +30,7 @@
         .field
           =radio_button_tag 'text', 'russian_shengheli'
           =label_tag 'text_russian_shengheli', 'Russian translation by Georgy Shengeli'
+        %button{type: "button", class: "btn btn-default selection-back"} Back
 
 
       #selection-parallel-texts.hidden
@@ -43,6 +44,7 @@
         .field
           =check_box_tag 'russian-shengheli'
           =label_tag 'russian-shengheli', 'Russian translation by Georgy Shengeli'
+        %button{type: "button", class: "btn btn-default selection-back"} Back
         %button.btn.btn-default{:data => {:direction => 'from_parallel_to_cantos'}} Next
 
       #selection-cantos.hidden
@@ -59,6 +61,7 @@
         .field
           =radio_button_tag 'canto', 'canto8'
           =label_tag 'canto_canto8', 'Canto VIII'
+        %button{type: "button", class: "btn btn-default selection-back"} Back
         =submit_tag "Read"
         
       
