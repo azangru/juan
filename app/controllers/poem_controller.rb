@@ -13,7 +13,7 @@ class PoemController < ApplicationController
   def get_texts(params)
     #first, get the relevant canto and its stanzas
     canto = Canto.find_by_name(params['canto'])
-    @stanzas = Stanza.where(canto_id: canto.id)
+    @stanzas = Stanza.where(canto_id: canto.id).includes(:stanza_translations)
     case params["view"]
     #if user wants to view a text without annotations, select the relevant translations
     when "no_annotations" # get text of the original poem or of one of its translations
@@ -42,17 +42,23 @@ class PoemController < ApplicationController
     stanza_translations = {}
     if params["english-original"]
       translation = Translation.find_by_name('original')
-      stanza_translations[:english_original] = @stanzas.map {|s| s.stanza_translations.find_by_translation_id(translation.id)}
+      stanza_translations[:english_original] = extract_translations(translation)
     end
     if params["russian-gnedich"]
       translation = Translation.find_by_author('Gnedich')
-      stanza_translations[:russian_gnedich] = @stanzas.map {|s| s.stanza_translations.find_by_translation_id(translation.id)}
+      stanza_translations[:russian_gnedich] = extract_translations(translation)
     end
     if params["russian-shengheli"]
       translation = Translation.find_by_author('Shengheli')
-      stanza_translations[:russian_shengheli] = @stanzas.map {|s| s.stanza_translations.find_by_translation_id(translation.id)}      
+      stanza_translations[:russian_shengheli] = extract_translations(translation)      
     end
     stanza_translations
+  end
+
+  # we have pre-populated the stanza_translations assoc on the stanza
+  # and so we only need to filter using ruby
+  def extract_translations(translation)
+    @stanzas.flat_map {|s| s.stanza_translations.select { |st| st.translation_id == translation.id }  }
   end
 
 end

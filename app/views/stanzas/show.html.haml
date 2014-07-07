@@ -1,2 +1,23 @@
-%h1 Stanzas#show
-%p Find me in app/views/stanzas/show.html.haml
+-keys = @stanza_translations.keys
+.row
+  %table.col-md-12
+    %thead
+      %tr
+        -keys.each do |key|
+          %th
+            %h1
+              = @stanza_translations[key].translation.title
+            %p
+              = @stanza_translations[key].translation.author
+            %h2
+              - canto_title = @stanza_translations[key].stanza.canto.canto_translations.find_by_translation_id(@stanza_translations[key].translation_id).title
+              = put_tags_in_stanza(canto_title)
+    %tbody
+      %tr
+        -keys.each do |key|
+          %td
+            -stanza_number = @stanza_translations[key].stanza.number
+            .stanza-number
+              =stanza_number
+            -text = @stanza_translations[key].text
+            =put_tags_in_stanza(text)

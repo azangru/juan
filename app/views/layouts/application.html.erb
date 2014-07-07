@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -27,24 +27,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Canto<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Dedication</a></li>
-              <li><a href="#">Canto the First</a></li>
-            </ul>
+            <a href="#collapseOne" data-toggle="collapse">Select a stanza<b class="caret"></b></a>
           </li>
-        <form class="navbar-form navbar-left">
-          <select class="form-control">
-            <option>Stanza 1</option>
-            <option>Stanza 2</option>
-            <option>Stanza 3</option>
-            <option>Stanza 4</option>
-            <option>Stanza 5</option>
-            <option>Stanza 6</option>
-            <option>Stanza 7</option>
-            <option>Stanza 8</option> 
-          </select>
-        </form>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -55,6 +39,26 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <div id="collapseOne" class="panel-collapse collapse">
+    <div class="panel-body">
+      <div id="stanza-selection-panel">
+        <form class="navbar-form navbar-right" action="../cantos/1/stanzas/1" method="get">
+          <%=select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"%>
+          <%=select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"%>
+          <br />
+          <%=check_box_tag 'english', 'original' %> 
+          <%=label_tag 'english', 'English'%>
+          <%=check_box_tag 'ru-gnedich', 'russian-1' %>
+          <%=label_tag 'ru-gnedich', 'Russian (Gnedich)'%>
+          <%=check_box_tag 'ru-shengheli', 'russian-2'%>
+          <%=label_tag 'ru-shengheli', 'Russian (Shengeli)'%>
+          <br />
+          <%=submit_tag "View stanza", class: "btn btn-default"%>
+        </form>
+      </div>
+    </div>
+  </div>
+
 
 
 <div class="container">

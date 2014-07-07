@@ -10,6 +10,11 @@ Juan::Application.routes.draw do
     resources :comments, only: [:index, :show]
   end
 
+  scope :format => true, :constraints => { :format => 'json' } do
+    get '/comments', to: "comments#show"
+    get '/cantos', to: "cantos#number_of_stanzas"
+  end
+
 end
 
 

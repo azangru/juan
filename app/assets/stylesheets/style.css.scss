@@ -3,6 +3,28 @@ body{
   background-image: url('/assets/bg.jpg');
 }
 
+#collapseOne {
+  .navbar-form{
+  padding-top: 0;
+  margin-top: 0;
+  }
+  #stanza-selection-panel{
+    width: 30%;
+    float: right;
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// a trick to center a div without specifying its width
+.poem-wrapper{
+  text-align: center;
+  .poem{
+    display: inline-block;
+    text-align: left; 
+  }
+}
+// end of the centering trick
+
 .comment-link{
   font-size: 130%;
   line-height: 0.5em;
