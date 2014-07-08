@@ -4,6 +4,19 @@ class PoemController < ApplicationController
     render '/pages/text'
   end
 
+  def search
+    @q = StanzaTranslation.search(params[:q])
+    stanza_translations = @q.result(:distinct => true)
+    @stanza_translations = stanza_translations.map { |st|
+      { canto_title: st.stanza.canto.canto_translations.find_by_translation_id(st.translation_id).title,
+        author: st.translation.author,
+        stanza_number: st.stanza.number,
+        text: st.text
+      }
+    }
+    render '/pages/search'
+  end
+
 # ===========LOGIC FOR GETTING THE REQUESTED TEXTS GOES BELOW===================
 
   private

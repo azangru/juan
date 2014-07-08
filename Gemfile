@@ -22,6 +22,7 @@ end
 gem 'jquery-rails'
 gem 'high_voltage', "~> 2.1.0"
 gem 'haml-rails'
+gem 'ransack'
 
 #bootstrap
 gem 'bootstrap-sass', '~> 3.1.1'

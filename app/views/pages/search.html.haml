@@ -1,0 +1,13 @@
+%h1 Search results
+
+.poem-wrapper
+  .poem
+    - @stanza_translations.each do |st|
+      %h2
+        = put_tags_in_stanza(st[:canto_title])
+      %p
+        %em
+          = "(#{st[:author]})"
+      %p
+        = st[:stanza_number]
+        = put_tags_in_stanza(st[:text])

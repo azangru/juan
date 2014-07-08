@@ -3,6 +3,12 @@ Juan::Application.routes.draw do
   root :to => 'high_voltage/pages#show', id: 'home'
   get "poem/show", to: 'poem#show'
 
+  resources :poem, only: [] do
+    collection do
+      match 'search', to: 'poem#search', via: [:get, :post], as: :search
+    end
+  end
+
   resources :cantos, only: [] do
     resources :stanzas, only: [:index, :show]
   end
