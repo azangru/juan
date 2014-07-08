@@ -6,14 +6,15 @@ class PoemController < ApplicationController
 
   def search
     @q = StanzaTranslation.search(params[:q])
-    stanza_translations = @q.result(:distinct => true)
+    stanza_translations = @q.result(:distinct => true).includes(stanza: {canto: :canto_translations})
     @stanza_translations = stanza_translations.map { |st|
-      { canto_title: st.stanza.canto.canto_translations.find_by_translation_id(st.translation_id).title,
+      { canto_title: st.stanza.canto.canto_translations.detect { |ct| ct.translation_id == st.translation_id }.title,
         author: st.translation.author,
         stanza_number: st.stanza.number,
         text: st.text
       }
     }
+    @grouped_translations = @stanza_translations.group_by { |st| st[:canto_title] }
     render '/pages/search'
   end
 

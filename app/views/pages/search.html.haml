@@ -1,13 +1,24 @@
+- # rely on the jQuery Highlight Plugin - http://bartaz.github.io/sandbox.js/jquery.highlight.html
+
+:javascript
+  $(document).ready( function() {
+  searchQuery = $('.form-control').val();
+  $('.found-stanzas').highlight(searchQuery)
+  } );
+
 %h1 Search results
 
 .poem-wrapper
   .poem
-    - @stanza_translations.each do |st|
+    - @grouped_translations.each do |title, translations_array|
       %h2
-        = put_tags_in_stanza(st[:canto_title])
+        = put_tags_in_stanza(title.dup) # need to duplicate the title, because apparently a key to the hash is a 'frozen string' and can't be modified
       %p
         %em
-          = "(#{st[:author]})"
-      %p
-        = st[:stanza_number]
-        = put_tags_in_stanza(st[:text])
+          = "(#{translations_array.first[:author]})"
+      .found-stanzas
+        - translations_array.each do |st|
+          %p
+            = st[:stanza_number]
+          %p
+            = put_tags_in_stanza(st[:text])
