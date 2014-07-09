@@ -24,7 +24,7 @@ $ ->
     changeView 'selection-first', 'selection-parallel-texts'
 
   # view for unannotated texts
-  $("label[for='text_english_original'], label[for='text_russian_gnedich'], label[for='text_russian_shengheli']").click ->
+  $("#selection-without-annotations label").click ->
     changeView 'selection-without-annotations', 'selection-cantos'
 
   # view for parallel texts
@@ -33,7 +33,7 @@ $ ->
     changeView 'selection-parallel-texts', 'selection-cantos'
 
   # cantos view
-  $("label[for='canto_dedication'], label[for='canto_canto1']").click ->
+  $("#selection-cantos label").click ->
     $label = $(this)
     $label.prev().prop('checked',true) # because otherwise the form will be sent without the value of this radio button
     $('.selection form').submit()

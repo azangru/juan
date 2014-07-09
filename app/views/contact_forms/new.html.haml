@@ -1,0 +1,12 @@
+%h1 Send a message
+
+.row
+  .message.col-md-6.col-md-push-3
+    = form_for @contact_form do |f|
+      = f.label :name
+      = f.text_field :name, :class => "form-control", :required => false
+      = f.label :email
+      = f.text_field :email, :class => "form-control", :required => false
+      = f.label :message
+      = f.text_area :message, :class => "form-control", :as => :text, :required => false
+      = f.submit 'Send message', :class => "btn btn-default"

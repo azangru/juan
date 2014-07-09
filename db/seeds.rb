@@ -8,22 +8,22 @@
 
 
 t1 = Translation.create!(
-  name: "original",
+  name: "English original",
   title: "Don Juan",
   language: "English",
-  author: "Byron",
+  author: "George Byron",
 )
 
 t2 = Translation.create!(
-  name: "russian-1",
+  name: "Russian translation by Tatiana Gnedich",
   title: "Дон Жуан",
   language: "Russian",
-  author: "Gnedich",
+  author: "Татьяна Гнедич",
 )
 
 t3 = Translation.create!(
-  name: "russian-2",
+  name: "Russian translation by Georgy Shengeli",
   title: "Дон-Жуан",
   language: "Russian",
-  author: "Shengheli",
+  author: "Георгий Шенгели",
 )

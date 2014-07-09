@@ -1,7 +1,5 @@
 %h1 How do you want to read Don Juan?
 
-/ <form id="msform">
-/ =form_tag
 
 .row
   .well.col-md-6
@@ -21,47 +19,29 @@
 
       #selection-without-annotations.hidden
         %h2 Without annotations
-        .field
-          =radio_button_tag 'text', 'english_original'
-          =label_tag 'text_english_original', 'English original'
-        .field
-          =radio_button_tag 'text', 'russian_gnedich'
-          =label_tag 'text_russian_gnedich', 'Russian translation by Tatiana Gnedich'
-        .field
-          =radio_button_tag 'text', 'russian_shengheli'
-          =label_tag 'text_russian_shengheli', 'Russian translation by Georgy Shengeli'
+        - Translation.pluck(:name).each do |name|
+          .field
+            =radio_button_tag 'text', name
+            =label_tag "text_#{name}", name
         %button{type: "button", class: "btn btn-default selection-back"} Back
 
 
       #selection-parallel-texts.hidden
         %h2 Parallel texts (side by side)
-        
-        .field
-          =check_box_tag 'english-original'
-          =label_tag 'english-original', 'English original (annotated)'
-        .field
-          =check_box_tag 'russian-gnedich'
-          =label_tag 'russian-gnedich', 'Russian translation by Tatiana Gnedich'
-        .field
-          =check_box_tag 'russian-shengheli'
-          =label_tag 'russian-shengheli', 'Russian translation by Georgy Shengeli'
+        - Translation.pluck(:name).each do |name|
+          .field
+            =check_box_tag "for_parallel_#{name}", name
+            =label_tag "for_parallel_#{name}", name
+
         %button{type: "button", class: "btn btn-default selection-back"} Back
         %button.btn.btn-default{:data => {:direction => 'from_parallel_to_cantos'}} Next
 
       #selection-cantos.hidden
         %h2 Cantos
-        .field
-          =radio_button_tag 'canto', 'Dedication'
-          =label_tag 'canto_dedication', 'Dedication'
-        .field
-          =radio_button_tag 'canto', 'Canto the First'
-          =label_tag 'canto_canto1', 'Canto I'
-        .field
-          =radio_button_tag 'canto', 'canto7'
-          =label_tag 'canto_canto7', 'Canto VII'
-        .field
-          =radio_button_tag 'canto', 'canto8'
-          =label_tag 'canto_canto8', 'Canto VIII'
+        - Canto.pluck(:name).each do |name|
+          .field
+            =radio_button_tag 'canto', name
+            =label_tag "canto_#{name}", name
         %button{type: "button", class: "btn btn-default selection-back"} Back
         =submit_tag "Read"
         
