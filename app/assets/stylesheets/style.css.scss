@@ -25,6 +25,34 @@ body{
 }
 // end of the centering trick
 
+.home-title{
+  h1{
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+    margin: 10px 0;
+    font-size: 170%;
+  }
+}
+
+.home-menu-container{
+  margin-top: 3em;
+  text-align: center;
+  img{
+    float: right;
+  };
+  .home-menu{
+    padding-top: 3em;
+    display: inline-block;
+    vertical-align: middle;
+    h3{
+      text-align: left;
+      line-height: 150%;
+    }
+  }
+}
+
 .comment-link{
   font-size: 130%;
   line-height: 0.5em;

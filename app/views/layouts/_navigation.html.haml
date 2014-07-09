@@ -1,0 +1,45 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = image_tag("byron.png")
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      #navigation-options
+        %ul.nav.navbar-nav
+          %li
+            = link_to 'Home', root_path
+          %li
+            = link_to 'Read', page_path('selection')
+          %li
+            = link_to 'About', page_path('about')
+          %li
+            = link_to 'Get in touch', new_contact_form_path
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a{"data-toggle" => "collapse", href: "#collapseOne"}
+            Select a stanza
+            %b.caret
+        = search_form_for @q, url: search_poem_index_path, html: { method: :post }, :class => "navbar-form navbar-left", :role => "search" do |f|
+          .form-group
+            = f.text_field(:text_cont, :class => "form-control", :placeholder => "Search")
+          = f.submit(:class => "btn btn-default")
+    / /.navbar-collapse
+  / /.container-fluid
+#collapseOne.panel-collapse.collapse
+  .panel-body
+    #stanza-selection-panel
+      %form.navbar-form.navbar-right{action: "../cantos/1/stanzas/1", method: "get"}
+        = select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"
+        = select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"
+        %br/
+        - Translation.pluck(:name).each do |name|
+          =check_box_tag "for_parallel_#{name}", name
+          =label_tag "for_parallel_#{name}", name
+        %br/
+        = submit_tag "View stanza", class: "btn btn-default"

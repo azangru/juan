@@ -1,1 +1,19 @@
-%h1 Here be homepage
+.row
+  .col-md-6.col-md-push-3
+    .home-title
+      %h1 Byron’s <em>Don Juan</em>
+      %h2 (with annotations by Isaac Asimov
+      %h2 and Russian translations)
+
+.home-menu-container
+  .row
+    .col-md-6
+      .home-menu
+        %h3 
+          = link_to 'Read', page_path('selection')
+        %h3
+          = link_to 'About', page_path('about')
+        %h3
+          = link_to 'Get in touch', new_contact_form_path
+    .col-md-6
+      = image_tag('juan.png')

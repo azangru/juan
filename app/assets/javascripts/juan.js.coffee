@@ -1,5 +1,9 @@
 $ ->
 
+######## SET THE ACTIVE LINK STYLE IN NAV #####
+  $("#navigation-options a").parent().removeClass('active')
+  $("#navigation-options a[href='#{window.location.pathname}']").parent().addClass('active')
+
 ######## MULTI-PAGE FORM #################
 
   $('.hidden').hide().removeClass('hidden') # a hack around Bootstrap's default behaviour of class 'hidden' (I use this class in the form). Could have used {style: "display: none"} instead of class 'hidden'

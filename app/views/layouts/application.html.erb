@@ -7,65 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="#"><%=image_tag("byron.png")%></a>
-      </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/selection">Read</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Get in touch</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#collapseOne" data-toggle="collapse">Select a stanza<b class="caret"></b></a>
-          </li>
-        <%= search_form_for @q, url: search_poem_index_path, html: { method: :post }, :class => "navbar-form navbar-left", :role => "search" do |f| %>
-          <div class="form-group">
-            <%=f.text_field(:text_cont, :class => "form-control", :placeholder => "Search") %>
-          </div>
-          <%= f.submit(:class => "btn btn-default") %>
-        <%end%>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-  <div id="collapseOne" class="panel-collapse collapse">
-    <div class="panel-body">
-      <div id="stanza-selection-panel">
-        <form class="navbar-form navbar-right" action="../cantos/1/stanzas/1" method="get">
-          <%=select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"%>
-          <%=select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"%>
-          <br />
-          <%=check_box_tag 'english', 'original' %> 
-          <%=label_tag 'english', 'English'%>
-          <%=check_box_tag 'ru-gnedich', 'russian-1' %>
-          <%=label_tag 'ru-gnedich', 'Russian (Gnedich)'%>
-          <%=check_box_tag 'ru-shengheli', 'russian-2'%>
-          <%=label_tag 'ru-shengheli', 'Russian (Shengeli)'%>
-          <br />
-          <%=submit_tag "View stanza", class: "btn btn-default"%>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
+  <%=render 'layouts/navigation' unless (params[:controller] == "high_voltage/pages" && params[:action] == "show" && params[:id] == "home") %>
 
 <div class="container">
   <%= yield %>
 </div>
+
 </body>
 </html>

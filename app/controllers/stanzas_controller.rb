@@ -12,14 +12,10 @@ class StanzasController < ApplicationController
     stanzas = Stanza.where(canto_id: canto.id)
     stanza = stanzas.find_by_number(params['stanzas-dropdown'])
     @stanza_translations = {}
-    if params['english'].present?
-      @stanza_translations[:english] = stanza.stanza_translations.find_by_translation_id(Translation.find_by_name(params['english']).id)
-    end
-    if params['ru-gnedich'].present?
-      @stanza_translations[:ru_gnedich] = stanza.stanza_translations.find_by_translation_id(Translation.find_by_name(params['ru-gnedich']).id)
-    end
-    if params['ru-shengheli'].present?
-      @stanza_translations[:ru_shengheli] = stanza.stanza_translations.find_by_translation_id(Translation.find_by_name(params['ru-shengheli']).id)
+    translation_names = (params.collect { |k, v| v if k.include? "for_parallel"}).compact
+    translation_names.each do |name|
+      translation = Translation.find_by_name(name)
+      @stanza_translations[name] = stanza.stanza_translations.find_by_translation_id(Translation.find_by_name(name).id)
     end
     @stanza_translations
   end
