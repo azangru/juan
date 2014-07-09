@@ -1,48 +1,49 @@
 %h1 How do you want to read Don Juan?
 
 
-.row
-  .well.col-md-6
-    .selection
-      =form_tag('../poem/show', method: :get)
+.selection-container
+  .row
+    .well.col-md-6.col-md-push-3
+      .selection
+        =form_tag('../poem/show', method: :get)
 
-      #selection-first
-        .field
-          =radio_button_tag 'view', 'no_annotations'
-          =label_tag 'view_no_annotations', 'Without annotations (in English or Russian)'
-        .field
-          =radio_button_tag 'view', 'asimov_annotations'
-          =label_tag 'view_asimov_annotations', 'With Asimov’s annotations (in English)'
-        .field
-          =radio_button_tag 'view', 'parallel_texts'
-          =label_tag 'view_parallel_texts', 'Parallel texts (side by side)'
-
-      #selection-without-annotations.hidden
-        %h2 Without annotations
-        - Translation.pluck(:name).each do |name|
+        #selection-first
           .field
-            =radio_button_tag 'text', name
-            =label_tag "text_#{name}", name
-        %button{type: "button", class: "btn btn-default selection-back"} Back
-
-
-      #selection-parallel-texts.hidden
-        %h2 Parallel texts (side by side)
-        - Translation.pluck(:name).each do |name|
+            =radio_button_tag 'view', 'no_annotations'
+            =label_tag 'view_no_annotations', 'Without annotations (in English or Russian)'
           .field
-            =check_box_tag "for_parallel_#{name}", name
-            =label_tag "for_parallel_#{name}", name
-
-        %button{type: "button", class: "btn btn-default selection-back"} Back
-        %button.btn.btn-default{:data => {:direction => 'from_parallel_to_cantos'}} Next
-
-      #selection-cantos.hidden
-        %h2 Cantos
-        - Canto.pluck(:name).each do |name|
+            =radio_button_tag 'view', 'asimov_annotations'
+            =label_tag 'view_asimov_annotations', 'With Asimov’s annotations (in English)'
           .field
-            =radio_button_tag 'canto', name
-            =label_tag "canto_#{name}", name
-        %button{type: "button", class: "btn btn-default selection-back"} Back
-        =submit_tag "Read"
+            =radio_button_tag 'view', 'parallel_texts'
+            =label_tag 'view_parallel_texts', 'Parallel texts (side by side)'
+
+        #selection-without-annotations.hidden
+          %h2 Without annotations
+          - Translation.pluck(:name).each do |name|
+            .field
+              =radio_button_tag 'text', name
+              =label_tag "text_#{name}", name
+          %button{type: "button", class: "btn btn-default selection-back"} Back
+
+
+        #selection-parallel-texts.hidden
+          %h2 Parallel texts (side by side)
+          - Translation.pluck(:name).each do |name|
+            .field
+              =check_box_tag "for_parallel_#{name}", name
+              =label_tag "for_parallel_#{name}", name
+
+          %button{type: "button", class: "btn btn-default selection-back"} Back
+          %button.btn.btn-default{:data => {:direction => 'from_parallel_to_cantos'}} Next
+
+        #selection-cantos.hidden
+          %h2 Cantos
+          - Canto.pluck(:name).each do |name|
+            .field
+              =radio_button_tag 'canto', name
+              =label_tag "canto_#{name}", name
+          %button{type: "button", class: "btn btn-default selection-back"} Back
+          =submit_tag "Read"
         
       

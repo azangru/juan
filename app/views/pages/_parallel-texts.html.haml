@@ -18,7 +18,7 @@
           -keys.each do |key|
             %td
               -stanza_number = @stanza_translations[key][i].stanza.number
-              .stanza-number
+              .stanza_number
                 =stanza_number
               -text = @stanza_translations[key][i].text
               =put_tags_in_stanza(text)

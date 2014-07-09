@@ -1,3 +1,17 @@
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{:class => "close", "data-dismiss" => "modal"}
+          %span{"aria-hidden" => "true"}
+            &times;
+        %h4{:class => "modal-title"} Title
+      .modal-body
+        %p One fine body
+      .modal-footer
+        %button{:class => "btn btn-primary", "data-dismiss" => "modal"} Close
+
+
 - if @stanza_translations.class == Array
   =render 'pages/single-text'
 - if @stanza_translations.class == Hash

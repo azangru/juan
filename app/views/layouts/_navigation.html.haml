@@ -38,8 +38,10 @@
         = select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"
         = select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"
         %br/
-        - Translation.pluck(:name).each do |name|
-          =check_box_tag "for_parallel_#{name}", name
-          =label_tag "for_parallel_#{name}", name
+        #texts-for-stanza
+          - Translation.pluck(:name).each do |name|
+            =check_box_tag "for_parallel_#{name}", name
+            =label_tag "for_parallel_#{name}", name
+            %br/
         %br/
         = submit_tag "View stanza", class: "btn btn-default"

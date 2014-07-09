@@ -4,6 +4,7 @@ body{
 }
 
 #collapseOne {
+  margin-top: -2em;
   .navbar-form{
   padding-top: 0;
   margin-top: 0;
@@ -12,6 +13,19 @@ body{
     width: 30%;
     float: right;
     background: rgba(255, 255, 255, 0.6);
+    form{
+      padding-top: 1em;
+      margin-right: 1em;
+    }
+    .btn{
+      float: right;
+    }
+    #texts-for-stanza{
+      padding-top: 1em;
+      label{
+        margin: 0.5em 0;
+      }     
+    }
   }
 }
 
@@ -24,6 +38,23 @@ body{
   }
 }
 // end of the centering trick
+
+.stanza-container{
+  text-align: center;
+  .stanza{
+    text-align: left;
+    display: inline-block;
+  }
+
+}
+
+
+.stanza_number {
+  margin: 1em 0;
+  padding-left: 6em;
+}
+
+
 
 .home-title{
   h1{
@@ -61,6 +92,10 @@ body{
   top: -0.1em;
 }
 
+.selection-container{
+  margin-top: 3em;
+}
+
 .selection {
   ul {
     font-size: 150%;
@@ -79,6 +114,7 @@ body{
     border-bottom: 1px dashed;
     font-size: 150%;
     font-weight: normal;
+    margin-bottom: 1em;
     margin-left: 0.5em;
     &:hover{
       color: $label-hover-color;
