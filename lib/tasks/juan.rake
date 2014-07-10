@@ -6,7 +6,7 @@ task :create_juan => :environment do
   file1 = "db/juan.csv"
   CSV.foreach(file1, :headers => true) do |row|
     c1 = Canto.find_or_create_by_name(row[4])
-    if row[0] == nil
+    if row[0] == nil || row[0] == ''
       ct1 = CantoTranslation.create!(
         canto_id: c1.id,
         translation_id: Translation.where(name: "English original").first.id,
