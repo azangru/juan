@@ -34,7 +34,7 @@
 #collapseOne.panel-collapse.collapse
   .panel-body
     #stanza-selection-panel
-      %form.navbar-form.navbar-right{action: "../cantos/1/stanzas/1", method: "get"}
+      %form.navbar-form.navbar-right{action: "/cantos/1/stanzas/1", method: "get"}
         = select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"
         = select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"
         %br/
