@@ -84,7 +84,7 @@ $ ->
     # replace footnote pseudotags
     input = input.replace(/\|\|\|comment-footnote\|\|\|(.*?)\|\|\|\/comment-footnote\|\|\|/g, "<div class='comment-footnote'>$1</div>")
     #replace hyperlink preutags
-    input = input.replace(/see note\s([^)]+)/g, "see <a href='#' class='comment-link' data-comment-number='$1' data-annotator='asimov'>note $1</a>")
+    input = input.replace(/note\s([^)]+)/g, "<a href='#' class='comment-link' data-comment-number='$1' data-annotator='asimov'>note $1</a>")
 
   # when reader clicks a link inside a modal, refresh the contents of the modal
   # P.S. yes, the following two functions almost completely repeat the first two, but I am too tired at the moment to refactor this
