@@ -27,7 +27,7 @@ class PoemController < ApplicationController
   def get_texts(params)
     #first, get the relevant canto and its stanzas
     canto = Canto.find_by_name(params['canto'])
-    @stanzas = Stanza.where(canto_id: canto.id).includes(:stanza_translations)
+    @stanzas = Stanza.where(canto_id: canto.id).includes(:stanza_translations).order(:number)
     case params["view"]
     #if user wants to view a text without annotations, select the relevant translations
     when "no_annotations" # get text of the original poem or of one of its translations

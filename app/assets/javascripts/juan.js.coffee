@@ -78,11 +78,11 @@ $ ->
     # replace italics pseudotags
     input = input.replace(/\|\|\|italics\|\|\|(.*?)\|\|\|\/italics\|\|\|/g, '<em>$1</em>')
     # replace comment-quote pseudotags (take care! this line will only work once \n line breaks are substituted by <br />)
-    input = input.replace(/\|\|\|comment-quote\|\|\|(.*?)\|\|\|\/comment-quote\|\|\|/g, "<div class='comment-quote'>$1</div>")
+    input = input.replace(/\|\|\|comment-quote\|\|\|(.*?)\|\|\|\/comment-quote\|\|\|/g, "<span class='comment-quote'>$1</span>")
     # replace comment quote attribute pseudotags
-    input = input.replace(/\|\|\|comment-quote-attr\|\|\|(.*?)\|\|\|\/comment-quote-attr\|\|\|/g, "<div class='comment-quote-attr'>$1</div>")
+    input = input.replace(/\|\|\|comment-quote-attr\|\|\|(.*?)\|\|\|\/comment-quote-attr\|\|\|/g, "<span class='comment-quote-attr'>$1</span>")
     # replace footnote pseudotags
-    input = input.replace(/\|\|\|comment-footnote\|\|\|(.*?)\|\|\|\/comment-footnote\|\|\|/g, "<div class='comment-footnote'>$1</div>")
+    input = input.replace(/\|\|\|comment-footnote\|\|\|(.*?)\|\|\|\/comment-footnote\|\|\|/g, "<span class='comment-footnote'>$1</span>")
     #replace hyperlink preutags
     input = input.replace(/note\s([^)]+)/g, "<a href='#' class='comment-link' data-comment-number='$1' data-annotator='asimov'>note $1</a>")
 

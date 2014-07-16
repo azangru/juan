@@ -125,10 +125,31 @@ body{
   }
 }
 
+// Search result highlight
+
 .highlight{
   background-color: #FFFF88;
 }
 
+// Annotation styles
+.comment-quote {
+  display: block;
+  margin: 1em 0 0 2em;
+}
+
+.comment-quote-attr{
+  display: block;
+  margin: -1em 0 1em 5em; 
+}
+
+.comment-footnote{
+  font-size: 80%;
+  display: inline-block;
+  margin-top: 2em;
+}
+
+
+// Contact us form
 .message{
   form {
     label{
