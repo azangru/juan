@@ -17,6 +17,14 @@ $ ->
       $("##{next}").data("previous-view", "#{current}")
       $('.selection').removeAttr('style')
 
+  # this is the same as previous function except for the penultimate line. Consider refactoring
+  goBack = (current, previous) ->
+    height = $('.selection').height()
+    $('.selection').height(height)  # to prevent the well from changing the size too much
+    $("##{current}").hide ->
+      $("##{previous}").fadeIn()
+      $('.selection').removeAttr('style')
+
   # Various possible combinations in the form #
 
   #first view
@@ -47,7 +55,7 @@ $ ->
     e.preventDefault()
     currentView = $(this).parent().attr('id')
     previousView = $(this).parent().data('previousView')
-    changeView currentView, previousView
+    goBack currentView, previousView
 
 
 

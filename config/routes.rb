@@ -22,7 +22,10 @@ Juan::Application.routes.draw do
     get '/cantos', to: "cantos#number_of_stanzas"
   end
 
-  resources :contact_forms, only: [:new, :create]
+  # resources :contact_forms, only: [:new, :create]
+  get 'message', to: "contact_forms#new", as: :message
+  post 'messages', to: "contact_forms#create", as: :messages
+
 
 end
 

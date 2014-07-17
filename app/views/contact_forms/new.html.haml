@@ -2,7 +2,7 @@
 
 .row
   .message.col-md-6.col-md-push-3
-    = form_for @contact_form do |f|
+    = form_for @contact_form, url: messages_path do |f|
       = f.label :name
       = f.text_field :name, :class => "form-control", :required => false
       = f.label :email

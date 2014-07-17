@@ -19,7 +19,7 @@
           %li
             = link_to 'About', page_path('about')
           %li
-            = link_to 'Get in touch', new_contact_form_path
+            = link_to 'Get in touch', message_path
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a{"data-toggle" => "collapse", href: "#collapseOne"}
@@ -34,9 +34,9 @@
 #collapseOne.panel-collapse.collapse
   .panel-body
     #stanza-selection-panel
-      %form.navbar-form.navbar-right{action: "/cantos/1/stanzas/1", method: "get"}
+      %form.navbar-form.navbar-left{action: "/cantos/1/stanzas/1", method: "get"}
         = select_tag "cantos-dropdown", options_for_select(Canto.all.collect{|c| [c.name, c.id]}), class: "form-control"
-        = select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"
+        = select_tag "stanzas-dropdown", options_for_select(Stanza.where(canto_id: 1).order('number').collect{|s| ["Stanza#{s.number}", s.number]}), class: "form-control"
         %br/
         #texts-for-stanza
           - Translation.pluck(:name).each do |name|
